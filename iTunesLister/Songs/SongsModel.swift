@@ -13,19 +13,20 @@ private struct ITunesSearchResult: Codable {
     var resultCount: Int
     var results: [ITunesTrack]
 }
+
 struct ITunesTrack: Codable {
     var trackId: Int
     var kind: String
     var artistName: String
+    var collectionName: String
     var trackName: String
-    var trackViewUrl: String
-    var previewUrl: String
-    var artworkUrl100: String
+    var trackNumber: Int
     var releaseDate: String
-    var shortDescription: String
-    var longDescription: String
+    var primaryGenreName: String
+    var artworkUrl100: String
+    var previewUrl: String
+    var trackViewUrl: String
 }
-
 protocol ITunesInteractor {
     func getMovies(matching searchString: String) -> AnyPublisher<[ITunesTrack], ServiceError>
 }

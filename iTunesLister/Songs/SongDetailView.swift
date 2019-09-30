@@ -24,9 +24,9 @@ struct SongDetailView : View {
                         .font(.title)
                     Spacer()
                     HStack {
-                        Text("by \(song.author)").font(.headline)
+                        Text("by \(song.artist)").font(.headline)
                         Spacer()
-                        Text("\(song.commentCount) comment(s)").font(.headline)
+                        Text("\(song.trackNumber) comment(s)").font(.headline)
                     }
                     HStack {
                         Spacer()
@@ -36,7 +36,7 @@ struct SongDetailView : View {
                     // Repeat content to force scrolling which for some reason corrects
                     // (or improves, at least) SwiftUI layout lineLimit(nil) bug described here:
                     // https://stackoverflow.com/questions/56505929/the-text-doesnt-gets-wrap-in-swift-ui
-                    Text(Array(repeating: song.description, count: 9).joined(separator: "\n\n"))
+                    Text(Array(repeating: song.title, count: 9).joined(separator: "\n\n"))
                 }
                 .lineLimit(nil)
                 .padding()

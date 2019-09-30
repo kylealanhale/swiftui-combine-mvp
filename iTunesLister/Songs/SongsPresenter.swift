@@ -13,9 +13,12 @@ import Combine
 struct SongsListItem {
     var id: Int
     var title: String
-    var author: String
-    var description: String
-    var commentCount: Int
+    var artist: String
+    var album: String
+    var trackNumber: Int
+    var releaseDate: String
+    var genre: String
+    var albumArtworkURL: String
 }
 
 protocol SongsPresenter {
