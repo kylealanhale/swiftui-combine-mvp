@@ -34,7 +34,7 @@ protocol ITunesInteractor {
 final class ProductionITunesInteractor: ITunesInteractor, Service {
     private func getSearchResult(matching searchString: String) -> AnyPublisher<ITunesSearchResult, ServiceError> {
         let cleanedSearchString = searchString.lowercased().replacingOccurrences(of: " ", with: "+")
-        return get(fromURL: "https://itunes.apple.com/search?limit=5&media=music&entity=song&term=\(cleanedSearchString)")
+        return get(fromURL: "https://itunes.apple.com/search?limit=200&media=music&entity=song&term=\(cleanedSearchString)")
     }
     func getSongs(matching searchString: String) -> AnyPublisher<[ITunesMusicTrack], ServiceError> {
         return getSearchResult(matching: searchString)
