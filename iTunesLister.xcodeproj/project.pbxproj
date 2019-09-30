@@ -31,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7004241C22C5502C00DE71CD /* PostsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7004241C22C5502C00DE71CD /* iTunesLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7004241F22C5502C00DE71CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7004242122C5502C00DE71CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7004242322C5502C00DE71CD /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
@@ -39,7 +39,7 @@
 		7004242822C5502E00DE71CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7004242B22C5502E00DE71CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7004242D22C5502E00DE71CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7004243222C5502E00DE71CD /* PostsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7004243222C5502E00DE71CD /* iTunesListerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesListerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7004243822C5502E00DE71CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7066D5EC22D0071A00702CF9 /* Build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Build; path = Carthage/Build; sourceTree = "<group>"; };
 		7066D5F122D2B1CD00702CF9 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
@@ -70,8 +70,8 @@
 		7004241322C5502C00DE71CD = {
 			isa = PBXGroup;
 			children = (
-				7004241E22C5502C00DE71CD /* PostsApp */,
-				7004243522C5502E00DE71CD /* PostsAppTests */,
+				7004241E22C5502C00DE71CD /* iTunesLister */,
+				7004243522C5502E00DE71CD /* iTunesListerTests */,
 				7004241D22C5502C00DE71CD /* Products */,
 				70B9A5BF22C826CE001804E4 /* Frameworks */,
 			);
@@ -80,13 +80,13 @@
 		7004241D22C5502C00DE71CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7004241C22C5502C00DE71CD /* PostsApp.app */,
-				7004243222C5502E00DE71CD /* PostsAppTests.xctest */,
+				7004241C22C5502C00DE71CD /* iTunesLister.app */,
+				7004243222C5502E00DE71CD /* iTunesListerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7004241E22C5502C00DE71CD /* PostsApp */ = {
+		7004241E22C5502C00DE71CD /* iTunesLister */ = {
 			isa = PBXGroup;
 			children = (
 				7066D5F322D2B2B300702CF9 /* Posts */,
@@ -95,7 +95,7 @@
 				7004242522C5502E00DE71CD /* Assets.xcassets */,
 				7004242D22C5502E00DE71CD /* Info.plist */,
 			);
-			path = PostsApp;
+			path = iTunesLister;
 			sourceTree = "<group>";
 		};
 		7004242722C5502E00DE71CD /* Preview Content */ = {
@@ -106,13 +106,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		7004243522C5502E00DE71CD /* PostsAppTests */ = {
+		7004243522C5502E00DE71CD /* iTunesListerTests */ = {
 			isa = PBXGroup;
 			children = (
 				7004243822C5502E00DE71CD /* Info.plist */,
 				70B9A5CA22C969B5001804E4 /* PostsPresenterTests.swift */,
 			);
-			path = PostsAppTests;
+			path = iTunesListerTests;
 			sourceTree = "<group>";
 		};
 		7013AECB22D40ED7004AC167 /* App */ = {
@@ -148,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7004241B22C5502C00DE71CD /* PostsApp */ = {
+		7004241B22C5502C00DE71CD /* iTunesLister */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7004243B22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "PostsApp" */;
+			buildConfigurationList = 7004243B22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "iTunesLister" */;
 			buildPhases = (
 				7004241822C5502C00DE71CD /* Sources */,
 				7004241922C5502C00DE71CD /* Frameworks */,
@@ -160,16 +160,16 @@
 			);
 			dependencies = (
 			);
-			name = PostsApp;
+			name = iTunesLister;
 			packageProductDependencies = (
 			);
 			productName = BabylonDemoApp;
-			productReference = 7004241C22C5502C00DE71CD /* PostsApp.app */;
+			productReference = 7004241C22C5502C00DE71CD /* iTunesLister.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7004243122C5502E00DE71CD /* PostsAppTests */ = {
+		7004243122C5502E00DE71CD /* iTunesListerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7004243E22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "PostsAppTests" */;
+			buildConfigurationList = 7004243E22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "iTunesListerTests" */;
 			buildPhases = (
 				7004242E22C5502E00DE71CD /* Sources */,
 				7004242F22C5502E00DE71CD /* Frameworks */,
@@ -180,9 +180,9 @@
 			dependencies = (
 				7004243422C5502E00DE71CD /* PBXTargetDependency */,
 			);
-			name = PostsAppTests;
+			name = iTunesListerTests;
 			productName = BabylonDemoAppTests;
-			productReference = 7004243222C5502E00DE71CD /* PostsAppTests.xctest */;
+			productReference = 7004243222C5502E00DE71CD /* iTunesListerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -204,7 +204,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7004241722C5502C00DE71CD /* Build configuration list for PBXProject "PostsApp" */;
+			buildConfigurationList = 7004241722C5502C00DE71CD /* Build configuration list for PBXProject "iTunesLister" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -219,8 +219,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7004241B22C5502C00DE71CD /* PostsApp */,
-				7004243122C5502E00DE71CD /* PostsAppTests */,
+				7004241B22C5502C00DE71CD /* iTunesLister */,
+				7004243122C5502E00DE71CD /* iTunesListerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,7 +273,7 @@
 /* Begin PBXTargetDependency section */
 		7004243422C5502E00DE71CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7004241B22C5502C00DE71CD /* PostsApp */;
+			target = 7004241B22C5502C00DE71CD /* iTunesLister */;
 			targetProxy = 7004243322C5502E00DE71CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -409,18 +409,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "PostsApp/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "iTunesLister/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = PostsApp/Info.plist;
+				INFOPLIST_FILE = iTunesLister/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.PostsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.iTunesLister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -432,18 +432,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "PostsApp/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "iTunesLister/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = PostsApp/Info.plist;
+				INFOPLIST_FILE = iTunesLister/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.PostsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.iTunesLister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -460,17 +460,17 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = PostsAppTests/Info.plist;
+				INFOPLIST_FILE = iTunesListerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.PostsAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.iTunesListerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PostsApp.app/PostsApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunesLister.app/iTunesLister";
 			};
 			name = Debug;
 		};
@@ -484,24 +484,24 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = PostsAppTests/Info.plist;
+				INFOPLIST_FILE = iTunesListerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.PostsAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = kylealanhale.iTunesListerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PostsApp.app/PostsApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunesLister.app/iTunesLister";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7004241722C5502C00DE71CD /* Build configuration list for PBXProject "PostsApp" */ = {
+		7004241722C5502C00DE71CD /* Build configuration list for PBXProject "iTunesLister" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7004243922C5502E00DE71CD /* Debug */,
@@ -510,7 +510,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7004243B22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "PostsApp" */ = {
+		7004243B22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "iTunesLister" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7004243C22C5502E00DE71CD /* Debug */,
@@ -519,7 +519,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7004243E22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "PostsAppTests" */ = {
+		7004243E22C5502E00DE71CD /* Build configuration list for PBXNativeTarget "iTunesListerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7004243F22C5502E00DE71CD /* Debug */,
