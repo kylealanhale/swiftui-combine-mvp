@@ -28,8 +28,8 @@ protocol SongsPresenter {
 }
 
 final class ProductionSongsPresenter: SongsPresenter, ObservableObject {
-    var items: [SongsListItem] = []
-    var isOffline: Bool = false
+    @Published var items: [SongsListItem] = []
+    @Published var isOffline: Bool = false
     
     private let interactor: ITunesInteractor
     
@@ -38,46 +38,36 @@ final class ProductionSongsPresenter: SongsPresenter, ObservableObject {
         self.populate()
     }
     
-    // Populate list of items from RxSwift model and let SwiftUI view know about it
+    // Populate list of items from iTunes track model data and let SwiftUI view know about it
     internal func populate() {
-//        interactor.getPosts()
-//            .flatMap { posts in self.mergeDetails(posts) }
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] items in
-//                self?.items = items
-//                self?.isOffline = false
-//                self?.didChange.send()
-//            }, onError: { [weak self] error in
-//                self?.isOffline = true
-//                self?.didChange.send()
-//            })
-//            .disposed(by: self.disposeBag)
+        cancellable = interactor
+            // Could later be a search string tied to a text field
+            .getSongs(matching: "The Smashing Pumpkins")
+            //.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .receive(on: RunLoop.main)
+            .map { tracks in tracks.map { track in
+                SongsListItem(
+                    id: track.trackId,
+                    title: track.trackName,
+                    artist: track.artistName,
+                    album: track.collectionName,
+                    trackNumber: track.trackNumber,
+                    releaseDate: track.releaseDate,
+                    genre: track.primaryGenreName,
+                    albumArtworkURL: track.artworkUrl100
+                )
+            }}
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                    case .failure(let error):
+                        self?.isOffline = true
+                        print(error, "Failed for some reason.")  // Ideally this would be logged to a server
+                    case .finished:
+                        print("Finished!")
+                }
+            }, receiveValue: { [weak self] songs in
+                self?.items = songs
+            })
     }
-//    var didChange = PassthroughSubject<Void, Never>()
-//    private let disposeBag = DisposeBag()
-//
-//    // Get details associated with each post, preserving order for later sorting
-//    private func mergeDetails(_ posts: [Post]) -> Observable<[PostsListItem]> {
-//        // Take first 100 posts only in case API changes, since demo implementation lacks paging
-//        let posts = posts.prefix(100)
-//        let bufferScheduler = SerialDispatchQueueScheduler(qos: .userInitiated)
-//
-//        return Observable.merge(posts.enumerated().map { index, post in
-//            // Get the user and comments for each post
-//            Observable.zip(
-//                Observable.just(index),
-//                Observable.just(post),
-//                interactor.getUser(userId: post.userId),
-//                interactor.getComments(postId: post.id).map { $0.count }
-//            )
-//        })
-//        // Collect results in a new list
-//        .buffer(timeSpan: RxTimeInterval.seconds(Int.max), count: posts.count, scheduler: bufferScheduler).take(1)
-//        // Sort and convert to view model type
-//        .map { $0
-//            .sorted(by: { $0.0 < $1.0 })
-//            .map { (_, post, user, commentCount) in
-//                PostsListItem(id: post.id, title: post.title, author: user.name, description: post.body, commentCount: commentCount) }
-//        }
-//    }
+    private var cancellable: AnyCancellable?
 }

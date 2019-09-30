@@ -11,10 +11,10 @@ import Combine
 
 private struct ITunesSearchResult: Codable {
     var resultCount: Int
-    var results: [ITunesTrack]
+    var results: [ITunesMusicTrack]
 }
 
-struct ITunesTrack: Codable {
+struct ITunesMusicTrack: Codable {
     var trackId: Int
     var kind: String
     var artistName: String
@@ -28,14 +28,15 @@ struct ITunesTrack: Codable {
     var trackViewUrl: String
 }
 protocol ITunesInteractor {
-    func getMovies(matching searchString: String) -> AnyPublisher<[ITunesTrack], ServiceError>
+    func getSongs(matching searchString: String) -> AnyPublisher<[ITunesMusicTrack], ServiceError>
 }
 
 final class ProductionITunesInteractor: ITunesInteractor, Service {
     private func getSearchResult(matching searchString: String) -> AnyPublisher<ITunesSearchResult, ServiceError> {
-        return get(fromURL: searchString)
+        let cleanedSearchString = searchString.lowercased().replacingOccurrences(of: " ", with: "+")
+        return get(fromURL: "https://itunes.apple.com/search?limit=5&media=music&entity=song&term=\(cleanedSearchString)")
     }
-    func getMovies(matching searchString: String) -> AnyPublisher<[ITunesTrack], ServiceError> {
+    func getSongs(matching searchString: String) -> AnyPublisher<[ITunesMusicTrack], ServiceError> {
         return getSearchResult(matching: searchString)
             .map { result in result.results }
             .eraseToAnyPublisher()
