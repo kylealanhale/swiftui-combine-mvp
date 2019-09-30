@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 import SwiftUI
 import Combine
 
@@ -26,7 +24,7 @@ protocol PostsPresenter {
     var isOffline: Bool { get }
 }
 
-final class ProductionPostsPresenter: PostsPresenter, BindableObject {
+final class ProductionPostsPresenter: PostsPresenter, ObservableObject {
     var items: [PostsListItem] = []
     var isOffline: Bool = false
     
@@ -39,44 +37,44 @@ final class ProductionPostsPresenter: PostsPresenter, BindableObject {
     
     // Populate list of items from RxSwift model and let SwiftUI view know about it
     internal func populate() {
-        interactor.getPosts()
-            .flatMap { posts in self.mergeDetails(posts) }
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] items in
-                self?.items = items
-                self?.isOffline = false
-                self?.didChange.send()
-            }, onError: { [weak self] error in
-                self?.isOffline = true
-                self?.didChange.send()
-            })
-            .disposed(by: self.disposeBag)
+//        interactor.getPosts()
+//            .flatMap { posts in self.mergeDetails(posts) }
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] items in
+//                self?.items = items
+//                self?.isOffline = false
+//                self?.didChange.send()
+//            }, onError: { [weak self] error in
+//                self?.isOffline = true
+//                self?.didChange.send()
+//            })
+//            .disposed(by: self.disposeBag)
     }
-    var didChange = PassthroughSubject<Void, Never>()
-    private let disposeBag = DisposeBag()
-
-    // Get details associated with each post, preserving order for later sorting
-    private func mergeDetails(_ posts: [Post]) -> Observable<[PostsListItem]> {
-        // Take first 100 posts only in case API changes, since demo implementation lacks paging
-        let posts = posts.prefix(100)
-        let bufferScheduler = SerialDispatchQueueScheduler(qos: .userInitiated)
-
-        return Observable.merge(posts.enumerated().map { index, post in
-            // Get the user and comments for each post
-            Observable.zip(
-                Observable.just(index),
-                Observable.just(post),
-                interactor.getUser(userId: post.userId),
-                interactor.getComments(postId: post.id).map { $0.count }
-            )
-        })
-        // Collect results in a new list
-        .buffer(timeSpan: RxTimeInterval.seconds(Int.max), count: posts.count, scheduler: bufferScheduler).take(1)
-        // Sort and convert to view model type
-        .map { $0
-            .sorted(by: { $0.0 < $1.0 })
-            .map { (_, post, user, commentCount) in
-                PostsListItem(id: post.id, title: post.title, author: user.name, description: post.body, commentCount: commentCount) }
-        }
-    }
+//    var didChange = PassthroughSubject<Void, Never>()
+//    private let disposeBag = DisposeBag()
+//
+//    // Get details associated with each post, preserving order for later sorting
+//    private func mergeDetails(_ posts: [Post]) -> Observable<[PostsListItem]> {
+//        // Take first 100 posts only in case API changes, since demo implementation lacks paging
+//        let posts = posts.prefix(100)
+//        let bufferScheduler = SerialDispatchQueueScheduler(qos: .userInitiated)
+//
+//        return Observable.merge(posts.enumerated().map { index, post in
+//            // Get the user and comments for each post
+//            Observable.zip(
+//                Observable.just(index),
+//                Observable.just(post),
+//                interactor.getUser(userId: post.userId),
+//                interactor.getComments(postId: post.id).map { $0.count }
+//            )
+//        })
+//        // Collect results in a new list
+//        .buffer(timeSpan: RxTimeInterval.seconds(Int.max), count: posts.count, scheduler: bufferScheduler).take(1)
+//        // Sort and convert to view model type
+//        .map { $0
+//            .sorted(by: { $0.0 < $1.0 })
+//            .map { (_, post, user, commentCount) in
+//                PostsListItem(id: post.id, title: post.title, author: user.name, description: post.body, commentCount: commentCount) }
+//        }
+//    }
 }
