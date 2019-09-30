@@ -19,7 +19,7 @@ struct SongsListItem {
 }
 
 protocol SongsPresenter {
-    init(interactor: PostsInteractor)
+    init(interactor: ITunesInteractor)
     var items: [SongsListItem] { get }
     var isOffline: Bool { get }
 }
@@ -28,9 +28,9 @@ final class ProductionSongsPresenter: SongsPresenter, ObservableObject {
     var items: [SongsListItem] = []
     var isOffline: Bool = false
     
-    private let interactor: PostsInteractor
+    private let interactor: ITunesInteractor
     
-    init(interactor: PostsInteractor) {
+    init(interactor: ITunesInteractor) {
         self.interactor = interactor
         self.populate()
     }

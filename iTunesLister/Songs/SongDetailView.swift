@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SongDetailView : View {
-    var post: PostsListItem
+    var song: SongsListItem
     var color: Color
     
     var body: some View {
@@ -20,13 +20,13 @@ struct SongDetailView : View {
                 .edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text(post.title)
+                    Text(song.title)
                         .font(.title)
                     Spacer()
                     HStack {
-                        Text("by \(post.author)").font(.headline)
+                        Text("by \(song.author)").font(.headline)
                         Spacer()
-                        Text("\(post.commentCount) comment(s)").font(.headline)
+                        Text("\(song.commentCount) comment(s)").font(.headline)
                     }
                     HStack {
                         Spacer()
@@ -36,7 +36,7 @@ struct SongDetailView : View {
                     // Repeat content to force scrolling which for some reason corrects
                     // (or improves, at least) SwiftUI layout lineLimit(nil) bug described here:
                     // https://stackoverflow.com/questions/56505929/the-text-doesnt-gets-wrap-in-swift-ui
-                    Text(Array(repeating: post.description, count: 9).joined(separator: "\n\n"))
+                    Text(Array(repeating: song.description, count: 9).joined(separator: "\n\n"))
                 }
                 .lineLimit(nil)
                 .padding()

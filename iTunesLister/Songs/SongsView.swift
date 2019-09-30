@@ -16,11 +16,11 @@ struct SongsView : View {
                 .items
                 .map { ($0, Color.getRandom()) },  // Associate a random icon/background color with each post
             id: \.0.id  // Identify each post's list item by its ID
-        ) { (post, color) in
-            NavigationLink(destination: SongDetailView(post: post, color: color)) {
+        ) { (song, color) in
+            NavigationLink(destination: SongDetailView(song: song, color: color)) {
                 HStack {
                     Image(systemName: "bolt.horizontal.fill").foregroundColor(color)
-                    Text(post.title)
+                    Text(song.title)
                 }
             }
         }

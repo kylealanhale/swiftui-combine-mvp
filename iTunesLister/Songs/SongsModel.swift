@@ -7,60 +7,36 @@
 //
 
 import Foundation
+import Combine
 
-struct Post: Codable {
-    var id: Int
-    var userId: Int
-    var title: String
-    var body: String
+private struct ITunesSearchResult: Codable {
+    var resultCount: Int
+    var results: [ITunesTrack]
+}
+struct ITunesTrack: Codable {
+    var trackId: Int
+    var kind: String
+    var artistName: String
+    var trackName: String
+    var trackViewUrl: String
+    var previewUrl: String
+    var artworkUrl100: String
+    var releaseDate: String
+    var shortDescription: String
+    var longDescription: String
 }
 
-struct Comment: Codable {
-    var id: Int
-    var postId: Int
-    var email: String
-    var name: String
-    var body: String
+protocol ITunesInteractor {
+    func getMovies(matching searchString: String) -> AnyPublisher<[ITunesTrack], ServiceError>
 }
 
-struct User: Codable {
-    var id: Int
-    var name: String
-    var username: String
-    var email: String
-}
-
-
-
-protocol PostsInteractor {
-//    func getPosts() -> Observable<[Post]>
-//    func getComments(postId: Int) -> Observable<[Comment]>
-//    func getUser(userId: Int) -> Observable<User>
-}
-//
-struct ProductionPostsInteractor: PostsInteractor {
-//    func getComments(postId: Int) -> Observable<[Comment]> {
-//        return getData(url: "https://jsonplaceholder.typicode.com/comments?postId=\(postId)", type: [Comment].self)
-//    }
-//    
-//    func getUser(userId: Int) -> Observable<User> {
-//        return getData(url: "https://jsonplaceholder.typicode.com/users/\(userId)", type: User.self)
-//    }
-//    
-//    func getPosts() -> Observable<[Post]> {
-//        return getData(url: "https://jsonplaceholder.typicode.com/posts", type: [Post].self)
-//    }
-//    
-//    private func getData<T: Codable>(url: String, type: T.Type) -> Observable<T> {
-//        guard let url = URL(string: url) else {
-//            return Observable.error(URLError(URLError.Code.badURL))
-//        }
-//        
-//        var request = URLRequest(url: url)
-//        request.cachePolicy = URLRequest.CachePolicy.returnCacheDataElseLoad // Use cache for temporary persistence
-//        
-//        return URLSession.shared.rx.data(request: request)
-//            .subscribeOn(SerialDispatchQueueScheduler(qos: .utility))
-//            .map { data in try JSONDecoder().decode(type, from: data) }
-//    }
+final class ProductionITunesInteractor: ITunesInteractor, Service {
+    private func getSearchResult(matching searchString: String) -> AnyPublisher<ITunesSearchResult, ServiceError> {
+        return get(fromURL: searchString)
+    }
+    func getMovies(matching searchString: String) -> AnyPublisher<[ITunesTrack], ServiceError> {
+        return getSearchResult(matching: searchString)
+            .map { result in result.results }
+            .eraseToAnyPublisher()
+    }
 }
