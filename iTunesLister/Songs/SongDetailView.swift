@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PostsDetailView : View {
+struct SongDetailView : View {
     var post: PostsListItem
     var color: Color
     

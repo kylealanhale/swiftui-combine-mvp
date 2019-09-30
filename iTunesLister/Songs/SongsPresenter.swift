@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct PostsListItem {
+struct SongsListItem {
     var id: Int
     var title: String
     var author: String
@@ -18,14 +18,14 @@ struct PostsListItem {
     var commentCount: Int
 }
 
-protocol PostsPresenter {
+protocol SongsPresenter {
     init(interactor: PostsInteractor)
-    var items: [PostsListItem] { get }
+    var items: [SongsListItem] { get }
     var isOffline: Bool { get }
 }
 
-final class ProductionPostsPresenter: PostsPresenter, ObservableObject {
-    var items: [PostsListItem] = []
+final class ProductionSongsPresenter: SongsPresenter, ObservableObject {
+    var items: [SongsListItem] = []
     var isOffline: Bool = false
     
     private let interactor: PostsInteractor

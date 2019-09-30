@@ -1,5 +1,5 @@
 //
-//  PostsModel.swift
+//  SongsModel.swift
 //  BabylonDemoApp
 //
 //  Created by Kyle Alan Hale on 6/30/19.

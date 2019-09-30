@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct PostsView : View {
-    @ObservedObject var presenter: ProductionPostsPresenter
+struct SongsView : View {
+    @ObservedObject var presenter: ProductionSongsPresenter
     
     var body: some View {
         List(presenter
@@ -17,7 +17,7 @@ struct PostsView : View {
                 .map { ($0, Color.getRandom()) },  // Associate a random icon/background color with each post
             id: \.0.id  // Identify each post's list item by its ID
         ) { (post, color) in
-            NavigationLink(destination: PostsDetailView(post: post, color: color)) {
+            NavigationLink(destination: SongDetailView(post: post, color: color)) {
                 HStack {
                     Image(systemName: "bolt.horizontal.fill").foregroundColor(color)
                     Text(post.title)

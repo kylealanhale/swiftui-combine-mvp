@@ -11,7 +11,7 @@ import SwiftUI
 struct SceneView: View {
     var body: some View {
         NavigationView {
-            PostsView(presenter: ProductionPostsPresenter(interactor: ProductionPostsInteractor()))
+            SongsView(presenter: ProductionSongsPresenter(interactor: ProductionPostsInteractor()))
         }
     }
 }
