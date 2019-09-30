@@ -43,7 +43,6 @@ final class ProductionSongsPresenter: SongsPresenter, ObservableObject {
         cancellable = interactor
             // Could later be a search string tied to a text field
             .getSongs(matching: "The Smashing Pumpkins")
-            //.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .receive(on: RunLoop.main)
             .map { tracks in tracks.map { track in
                 SongsListItem(
@@ -63,7 +62,7 @@ final class ProductionSongsPresenter: SongsPresenter, ObservableObject {
                         self?.isOffline = true
                         print(error, "Failed for some reason.")  // Ideally this would be logged to a server
                     case .finished:
-                        print("Finished!")
+                        self?.isOffline = false
                 }
             }, receiveValue: { [weak self] songs in
                 self?.items = songs
