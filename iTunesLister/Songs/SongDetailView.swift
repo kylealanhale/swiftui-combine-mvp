@@ -21,8 +21,10 @@ struct SongDetailView : View {
                 VStack(alignment: .leading) {
                     Text(song.title)
                         .font(.title)
+                        .lineLimit(2)
                     Text("by \(song.artist)").font(.headline)
                     Text("track \(song.trackNumber) of \(song.album)").font(.headline)
+                        .lineLimit(3)
                     HStack {
                         Spacer()
                         Image(systemName: "bolt.horizontal").padding()
