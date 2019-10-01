@@ -34,6 +34,7 @@ struct SongsView : View {
 }
 
 fileprivate extension Color {
+    /// Get a random color with saturation set to 1/3 and brightness to 2/3
     static func getRandom() -> Color {
         return Color(hue: .random(in: 0...1), saturation: 0.333, brightness: 0.666)
     }

@@ -42,7 +42,7 @@ final class ITunesImagePresenter: ObservableObject {
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
-                    case .failure(let error):
+                    case .failure:
                         self.isLoaded = true
                         self.hadError = true
                     case .finished:

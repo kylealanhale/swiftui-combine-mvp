@@ -20,12 +20,14 @@ protocol Service {
     func getData(fromURL url: String) -> AnyPublisher<Data, ServiceError>
 }
 extension Service {
+    /// Get a given type from a URL
     func get<T: Codable>(fromURL urlString: String) -> AnyPublisher<T, ServiceError> {
         return getData(fromURL: urlString)
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in .decode }
             .eraseToAnyPublisher()
     }
+    /// Get raw data from a URL
     func getData(fromURL url: String) -> AnyPublisher<Data, ServiceError> {
         guard let url = URL(string: url) else {
             return Fail<Data, ServiceError>(error: .url(URLError(URLError.Code.badURL))).eraseToAnyPublisher()

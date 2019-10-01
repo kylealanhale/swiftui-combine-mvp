@@ -19,22 +19,29 @@ struct ITunesImageView: View {
     var body: some View {
         Group {
             if presenter.isLoaded {
+                // Network error
                 if presenter.hadError {
                     Image(systemName: "xmark.octagon.fill")
                         .resizable().aspectRatio(1, contentMode: .fit)
                         .frame(width: 100, height: 100, alignment: .center)
                 }
+                // No known error; load image!
                 else {
                     Image(uiImage: UIImage(data: presenter.imageData) ?? UIImage(systemName: "xmark.octagon.fill") ?? UIImage())
                     .resizable().aspectRatio(contentMode: .fit)
                 }
             }
+            // Waiting to load
             else {
                 Image(systemName: "music.note")
                     .resizable().aspectRatio(1, contentMode: .fit)
                     .frame(width: 100, height: 100, alignment: .center)
+                    // Really wanted to make this spin, but SwiftUI doesn't
+                    // support animation for rotation and I didn't have time
+                    // to figure it out.
             }
         }
+        // Set outer frame
         .frame(minWidth: .leastNormalMagnitude, idealWidth: CGFloat(presenter.width), maxWidth: .greatestFiniteMagnitude, minHeight: .leastNormalMagnitude, idealHeight: CGFloat(presenter.height), maxHeight: .greatestFiniteMagnitude, alignment: .top)
 
     }

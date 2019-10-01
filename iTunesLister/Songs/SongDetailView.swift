@@ -14,8 +14,7 @@ struct SongDetailView : View {
     
     var body: some View {
         ZStack {
-            // Use post color to create a lighter-colored background
-            color
+            color  // Use post color to create a lighter-colored background
                 .opacity(0.1)
                 .edgesIgnoringSafeArea(.all)
             ScrollView {
