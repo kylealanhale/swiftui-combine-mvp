@@ -53,7 +53,7 @@ final class ProductionSongsPresenter: SongsPresenter, ObservableObject {
                     trackNumber: track.trackNumber,
                     releaseDate: track.releaseDate,
                     genre: track.primaryGenreName,
-                    albumArtworkURL: track.artworkUrl100
+                    albumArtworkURL: track.artworkUrl100.replacingOccurrences(of: "100x100bb", with: "1000x1000bb")
                 )
             }}
             .sink(receiveCompletion: { [weak self] completion in
